@@ -1,14 +1,33 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
 
 module.exports = {
-  defaultNetwork: "localhost",
+  solidity: "0.8.21",
   networks: {
-    localhost: {
-      url: "http://127.0.0.1:8545",
-      accounts: [
-        "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d", // Account #1 private key
-      ],
+    sepolia: {
+      url: process.env.SEPOLIA_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY],
     },
   },
-  solidity: "0.8.19",
+};
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
+
+module.exports = {
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.19"
+      },
+      {
+        version: "0.8.28"
+      }
+    ]
+  },
+  networks: {
+    sepolia: {
+      url: process.env.SEPOLIA_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY]
+    }
+  }
 };
